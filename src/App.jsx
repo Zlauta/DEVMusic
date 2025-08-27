@@ -1,14 +1,15 @@
-import React from "react";
-import FormRegister from "./components/auth/FormRegister";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Error404 from "./Error404";
 import RegisterPage from "./pages/RegisterPage";
-import "sweetalert2/dist/sweetalert2.min.css";
 
-const App = () => {
+export default function App() {
   return (
-    <div>
-      <RegisterPage></RegisterPage>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* el * significa “cualquier otra ruta” */}
+        <Route path="/registro" element={<RegisterPage></RegisterPage>} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
-
-export default App;
+}
