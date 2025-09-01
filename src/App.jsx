@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Error404 from "./Error404";
+import Error404 from "./pages/Error404";
 import RegisterPage from "./pages/RegisterPage";
 
 export default function App() {
