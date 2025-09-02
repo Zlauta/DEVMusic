@@ -1,21 +1,18 @@
-// src/App.jsx
-import React from 'react';
-import Footer from './components/Footer';
 
-
-function App() {
+import { Routes, Route } from "react-router-dom";
+import Error404 from "./Error404";
+import RegisterPage from "./pages/RegisterPage";
+import AdminPage from "./pages/AdminPage";
+import "sweetalert2/dist/sweetalert2.min.css";
+const App = () => {
   return (
-    <div>
-      {/* Contenido de ejemplo para ver el footer */}
-      <div style={{ minHeight: '100dvh', backgroundColor: '#222', color: '#fff', padding: '20px' }}>
-        <h1 style={{ color: '#f8953e' }}> DEVMusic</h1>
-        <p>Contenido principal de la página para probar el footer.</p>
-      </div>
+    <Routes>
+      {/* el * significa “cualquier otra ruta” */}
+      <Route path="/registro" element={<RegisterPage></RegisterPage>} />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+      <Route path="/admin" element={<AdminPage></AdminPage>}></Route>
+      <Route path="*" element={<Error404 />} />
+    </Routes>
   );
-}
-
+};
 export default App;
