@@ -1,0 +1,11 @@
+
+.footer a {
+  text-decoration: solid 1mx;
+}
+
+.footer a:hover {
+  color: #f1b637;
+}
+.alturaMinima {
+  min-height: 100dvh;
+}
