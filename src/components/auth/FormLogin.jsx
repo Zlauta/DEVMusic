@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import { loginUsuario } from "../../service/userService";
 
 const FormLogin = () => {
   const {
@@ -12,92 +13,56 @@ const FormLogin = () => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      nombreUsuario: "",
+      email: "",
       password: "",
     },
   });
 
-  function obtenerUsuariosDeLocalStorage() {
-    try {
-      const listadoUsuariosJSON = localStorage.getItem("usuarios");
-      const listadoUsuarios = JSON.parse(listadoUsuariosJSON);
-      return listadoUsuarios ? listadoUsuarios : [];
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }
-
   function onSubmit(data) {
-    try {
-      const usuariosDeLaDb = obtenerUsuariosDeLocalStorage();
+    const resultado = loginUsuario(
+      data.email,
+      data.password,
+      data.nombreUsuario
+    );
 
-      if (!usuariosDeLaDb || !Array.isArray(usuariosDeLaDb)) {
-        throw new Error("No se pudo acceder a la base de datos local");
-      }
-
-      const usuario = usuariosDeLaDb.find(
-        (usuarioLS) => usuarioLS.nombreUsuario === data.nombreUsuario
-      );
-
-      if (!usuario) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "El usuario no existe en la base de datos",
-        });
-        return;
-      }
-
-      if (usuario.password !== data.password) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Contraseña incorrecta",
-        });
-        return;
-      }
-
-      const usuarioLogueado = {
-        nombreUsuario: data.nombreUsuario,
-        loginAt: new Date().toISOString(),
-      };
-
-      sessionStorage.setItem("usuario", JSON.stringify(usuarioLogueado));
-
-      Swal.fire({
-        title: "Usuario Logueado",
-        icon: "success",
-        draggable: true,
-      });
-
-      reset();
-      // navegacion("/");
-    } catch (error) {
-      console.error("Error en el login:", error);
+    if (!resultado.exito) {
       Swal.fire({
         icon: "error",
-        title: "Error inesperado",
-        text: error.message || "Ocurrió un problema al iniciar sesión",
+        title: "Oops...",
+        text: resultado.mensaje,
+        showConfirmButton: false,
+        timer: 2500,
+        position: "center",
       });
+      return;
     }
+
+    Swal.fire({
+      position: "center",
+      title: "Bienvenido a DEVMusic",
+      text: resultado.mensaje,
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2500,
+    });
+
+    reset();
   }
   return (
     <div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         {/* Nombre */}
         <Form.Group className="mb-3">
-          <Form.Label>Nombre</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Tu nombre"
-            isInvalid={errors.nombreUsuario}
-            {...register("nombreUsuario", {
+            type="email"
+            placeholder="Tu Email"
+            isInvalid={errors.email}
+            {...register("email", {
               required: "El campo es obligatorio",
               pattern: {
-                value: /^[\p{L}\p{M}\p{Nd}]+$/u,
-                message:
-                  "Solo se permiten letras y números, sin símbolos ni espacios",
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
+                message: "El email no es válido",
               },
               minLength: {
                 value: 4,
@@ -106,7 +71,7 @@ const FormLogin = () => {
             })}
           />
           <Form.Control.Feedback type="invalid">
-            {errors.nombreUsuario?.message}
+            {errors.email?.message}
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3">

@@ -35,6 +35,7 @@ const MusicsTable = () => {
       showCancelButton: true,
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar",
+      confirmButtonColor: "#E76C3C",
     });
     if (res.isConfirmed) {
       eliminarCancionPorId(id);

@@ -89,7 +89,11 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
             <Button variant="outline-secondary" onClick={onClose}>
               Cancelar
             </Button>
-            <Button type="submit" disabled={isSubmitting || !isDirty}>
+            <Button
+              style={{ background: "#E76C3C", border: "none" }}
+              type="submit"
+              disabled={isSubmitting || !isDirty}
+            >
               Crear
             </Button>
           </Modal.Footer>

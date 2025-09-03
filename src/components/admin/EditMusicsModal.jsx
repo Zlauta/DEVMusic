@@ -112,6 +112,7 @@ const EditMusicsModal = ({ canciones, onSaved, onClose }) => {
                 Cerrar
               </Button>
               <Button
+                style={{ background: "#E76C3C", border: "none" }}
                 type="submit"
                 variant="primary"
                 disabled={isSubmitting || !isDirty}
