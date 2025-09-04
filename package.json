@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@fontsource/inter": "^5.2.6",
     "@fontsource/ubuntu": "^5.2.6",
     "aos": "^2.3.4",

@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import animationError from "../assets/milogoGigante.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 import "@fontsource/inter/400.css"; // peso normal
 import "@fontsource/inter/700.css"; // peso bold
 import React, { useEffect, useState } from "react";
+import CheckboxTerms from "../components/CheckboxTerms";
 import { useNavigate } from "react-router-dom";
 
 const Error404 = () => {
@@ -18,7 +22,7 @@ const Error404 = () => {
 
     // Redirecciona cuando llega a 0
     if (count === 0) {
-      return navigate("/registro");
+      return navigate("/contacto");
     }
 
     return () => clearInterval(interval); // Limpia el intervalo
@@ -26,8 +30,9 @@ const Error404 = () => {
 
   return (
     <>
-      <main id="errorpage" className="vh-100 vw-100 text-white">
+      <div id="errorpage" className="vh-100 vw-100 text-white">
         <section
+          /* data-aos="flip-up" */
           id="Conteiner"
           className="text-center"
           style={{
@@ -77,7 +82,8 @@ const Error404 = () => {
             Volver al inicio
           </Link>
         </section>
-      </main>
+        <CheckboxTerms />
+      </div>
     </>
   );
 };
