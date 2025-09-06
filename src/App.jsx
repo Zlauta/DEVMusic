@@ -1,19 +1,22 @@
 
-import { Routes, Route } from "react-router-dom";
-import Error404 from "./Error404";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Error404 from "./pages/Error404";
 import RegisterPage from "./pages/RegisterPage";
-import AdminPage from "./pages/AdminPage";
-import "sweetalert2/dist/sweetalert2.min.css";
-import LoginPage from "./pages/LoginPage";
-const App = () => {
+import Terminos from "./pages/TermYCondi";
+import ContactMailto from "./pages/Contactanos";
+
+export default function App() {
   return (
-    <Routes>
-      {/* el * significa “cualquier otra ruta” */}
-      <Route path="/registro" element={<RegisterPage></RegisterPage>} />
-      <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-      <Route path="/admin" element={<AdminPage></AdminPage>}></Route>
-      <Route path="*" element={<Error404 />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        {/* el * significa “cualquier otra ruta” */}
+        <Route path="/contacto" element={<ContactMailto />} />
+        <Route path="/registro" element={<RegisterPage></RegisterPage>} />
+        <Route path="*" element={<Error404 />} />
+        <Route path="/terminos" element={<Terminos />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 };
 export default App;
