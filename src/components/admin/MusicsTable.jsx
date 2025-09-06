@@ -65,17 +65,27 @@ const MusicsTable = () => {
         <Table className="m-0" bordered hover responsive>
           <thead>
             <tr>
-              <th style={{ background: "#F8953E", minWidth: "30px" }}>#</th>
+              <th style={{ background: "#F8953E", minWidth: "60px" }}>
+                Portada
+              </th>
               <th style={{ background: "#F8953E", minWidth: "120px" }}>
                 Cancion
               </th>
               <th style={{ background: "#F8953E", minWidth: "120px" }}>
                 Artista
               </th>
+              <th style={{ background: "#F8953E", minWidth: "200px" }}>
+                Audio
+              </th>
               <th style={{ background: "#F8953E", minWidth: "140px" }}>
                 Creado
               </th>
-              <th style={{ background: "#F8953E", minWidth: "180px" }}>
+              <th
+                style={{
+                  background: "#F8953E",
+                  minWidth: "180px",
+                }}
+              >
                 Accion
               </th>
             </tr>
