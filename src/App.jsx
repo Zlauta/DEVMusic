@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Error404 from "./pages/Error404";
 import RegisterPage from "./pages/RegisterPage";
@@ -15,5 +16,7 @@ export default function App() {
         <Route path="/terminos" element={<Terminos />} />
       </Routes>
     </BrowserRouter>
+
   );
-}
+};
+export default App;

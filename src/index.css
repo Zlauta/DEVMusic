@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -64,4 +65,16 @@
 
 .animate-pulse-grow {
   animation: pulse-grow 1.5s ease-in-out infinite;
+
+
+.footer a {
+  text-decoration: solid 1mx;
+}
+
+.footer a:hover {
+  color: #f1b637;
+}
+.alturaMinima {
+  min-height: 100dvh;
+
 }
