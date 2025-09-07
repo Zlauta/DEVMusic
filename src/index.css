@@ -1,4 +1,72 @@
 
+* {
+  margin: 0;
+  padding: 0;
+}
+#errorpage {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: RGB(26 29 33);
+  justify-content: center;
+  align-items: center;
+}
+#imagenError {
+  width: 100%;
+  height: 100%;
+}
+#tituloError {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  color: RGB(248 149 62);
+}
+#imgenCont {
+  border: 1px solid rgba(56, 59, 63, 0.801);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Conteiner {
+  padding: 20px;
+  border: 3px solid rgba(56, 59, 63, 0.801);
+  border-radius: 3px;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#contado {
+  font-size: 20px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+@media (max-width: 768px) {
+  #errorpage {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: RGB(26 29 33);
+    flex-direction: column;
+  }
+}
+@keyframes pulse-grow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* Aumenta levemente el tamaño */
+  }
+}
+
+.animate-pulse-grow {
+  animation: pulse-grow 1.5s ease-in-out infinite;
+
+
 .footer a {
   text-decoration: solid 1mx;
 }
@@ -8,4 +76,5 @@
 }
 .alturaMinima {
   min-height: 100dvh;
+
 }
