@@ -4,19 +4,21 @@ import Error404 from "./pages/Error404";
 import RegisterPage from "./pages/RegisterPage";
 import Terminos from "./pages/TermYCondi";
 import ContactMailto from "./pages/Contactanos";
+import AboutUs from "./pages/AboutUs";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    
       <Routes>
         {/* el * significa “cualquier otra ruta” */}
         <Route path="/contacto" element={<ContactMailto />} />
         <Route path="/registro" element={<RegisterPage></RegisterPage>} />
-        <Route path="*" element={<Error404 />} />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/terminos" element={<Terminos />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
-    </BrowserRouter>
+  
 
   );
 };
-export default App;
+//export default App;
