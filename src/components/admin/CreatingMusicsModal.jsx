@@ -15,6 +15,8 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
     defaultValues: {
       nombreCancion: "",
       nombreArtista: "",
+      urlPortada: "",
+      urlAudio: "",
     },
   });
 
@@ -32,6 +34,8 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
       id: Date.now(),
       nombreCancion: data.nombreCancion.trim(),
       nombreArtista: data.nombreArtista.trim(),
+      urlPortada: data.urlPortada.trim(),
+      urlAudio: data.urlAudio.trim(),
       createdAt: new Date().toISOString(),
     };
 
@@ -82,6 +86,45 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
               />
               <Form.Control.Feedback type="invalid">
                 {errors.nombreArtista?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-2">
+              <Form.Label>Portada (URL)</Form.Label>
+              <Form.Control
+                type="url"
+                placeholder="Ej: https://ejemplo.com/portada.jpg"
+                isInvalid={!!errors.urlPortada}
+                {...register("urlPortada", {
+                  required: true,
+                  pattern: {
+                    value: /^https?:\/\/.+/i,
+                    message: "La URL debe comenzar con http:// o https://",
+                  },
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.urlPortada?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-2">
+              <Form.Label>Audio (URL)</Form.Label>
+              <Form.Control
+                type="url"
+                placeholder="Ej: https://ejemplo.com/audio.mp3"
+                isInvalid={!!errors.urlAudio}
+                {...register("urlAudio", {
+                  required: true,
+                  required: true,
+                  pattern: {
+                    value: /^https?:\/\/.+/i,
+                    message: "La URL debe comenzar con http:// o https://",
+                  },
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.urlAudio?.message}
               </Form.Control.Feedback>
             </Form.Group>
           </Modal.Body>
