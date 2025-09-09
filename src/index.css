@@ -1,4 +1,5 @@
 
+
 * {
   margin: 0;
   padding: 0;
@@ -66,15 +67,26 @@
 .animate-pulse-grow {
   animation: pulse-grow 1.5s ease-in-out infinite;
 
-
 .footer a {
-  text-decoration: solid 1mx;
+  text-decoration: solid 1px;
+  box-shadow: 0 0 10px 5px #F8953E; /* glow naranja */
+  transition: box-shadow 0.3s ease-in-out;
+  margin-right: 1rem;
+  border-radius: 40px;
+  flex-grow: 1;
+
 }
 
 .footer a:hover {
   color: #f1b637;
+  box-shadow: 0 0 25px 10px #e7880c; /* glow más intenso al pasar el mouse */
 }
 .alturaMinima {
   min-height: 100dvh;
 
+}
+.main-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
