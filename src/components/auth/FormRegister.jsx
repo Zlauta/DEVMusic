@@ -65,7 +65,7 @@ const FormRegister = () => {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form className="px-4" onSubmit={handleSubmit(onSubmit)}>
         {/* Nombre */}
         <Form.Group className="mb-3">
           <Form.Label>Nombre</Form.Label>

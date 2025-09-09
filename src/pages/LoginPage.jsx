@@ -2,6 +2,7 @@ import React from "react";
 import FormLogin from "../components/auth/FormLogin";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import LogoRegister from "../assets/logo-register.png";
+import { NavLink } from "react-router-dom";
 
 const LoginPage = () => {
   return (
@@ -14,7 +15,6 @@ const LoginPage = () => {
           <Row className="justify-content-center">
             <Col xs={12} md={8} lg={6}>
               <Card
-                data-aos="zoom-in"
                 style={{
                   backgroundColor: "rgb(33, 37, 41)",
                   color: "white",
