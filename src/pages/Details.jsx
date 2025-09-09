@@ -158,7 +158,7 @@ const Details = () => {
                     size="lg"
                     className="flex-fill flex-md-grow-0"
                     data-aos="zoom-in"
-                    data-aos-delay="1100"
+                    data-aos-delay="600"
                   >
                     ♥ Favoritos
                   </Button>
