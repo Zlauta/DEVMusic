@@ -6,9 +6,11 @@ import Footer from "../components/Footer";
 const LayoutComNavbar = () => {
   return (
     <div>
+
       <Header></Header>
       <main className="alturaMinima">
         <Outlet></Outlet>
+
       </main>
       <Footer></Footer>
     </div>
