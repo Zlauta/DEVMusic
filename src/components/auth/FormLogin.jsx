@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { loginUsuario } from "../../service/userService";
+import { useNavigate } from "react-router-dom";
 
 const FormLogin = () => {
   const {
@@ -17,6 +18,8 @@ const FormLogin = () => {
       password: "",
     },
   });
+
+  const navigate = useNavigate();
 
   function onSubmit(data) {
     const resultado = loginUsuario(
@@ -47,10 +50,11 @@ const FormLogin = () => {
     });
 
     reset();
+    navigate("/");
   }
   return (
     <div>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form className="px-5" onSubmit={handleSubmit(onSubmit)}>
         {/* Nombre */}
         <Form.Group className="mb-3">
           <Form.Label>Email</Form.Label>

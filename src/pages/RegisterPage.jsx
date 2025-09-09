@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Nav, Row } from "react-bootstrap";
 import FormRegister from "../components/auth/FormRegister";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LogoRegister from "../assets/logo-register.png";
 
 const RegisterPage = () => {
@@ -15,7 +15,6 @@ const RegisterPage = () => {
           <Row className="justify-content-center">
             <Col xs={12} md={8} lg={6}>
               <Card
-                data-aos="zoom-in"
                 style={{
                   backgroundColor: "rgb(33, 37, 41)",
                   color: "white",
@@ -41,7 +40,9 @@ const RegisterPage = () => {
                   </h4>
                   <FormRegister></FormRegister>
                   <div className=" d-flex flex-column align-items-center ">
-                    <h6 className="mt-4 ">← Volver a Inicio</h6>
+                    <Nav.Link as={Link} to="/">
+                      ← Volver a Inicio
+                    </Nav.Link>
                     <h6 className="mt-3 ">Ya tengo Cuenta →</h6>
                   </div>
                 </Card.Body>

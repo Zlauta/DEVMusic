@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { Container, InputGroup, Nav, Navbar } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import LogoDev from "../assets/Logodev.png";
@@ -6,17 +6,37 @@ import { Form, FormControl, Button } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+export const ADMIN_EMAIL = "admin@devmusic.com";
+
 const Header = () => {
   const [search, setSearch] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState(null);
+  const navigate = useNavigate();
+
+  // correo único del admin
+
+  useEffect(() => {
+    const user = sessionStorage.getItem("usuarios"); // acá guardás tu user en login
+    if (user) {
+      const parsedUser = JSON.parse(user); // suponiendo que guardás un objeto {email, nombre}
+      setIsLoggedIn(true);
+      setUserEmail(parsedUser.email);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("usuarios");
+    setIsLoggedIn(false);
+    setUserEmail(null);
+    navigate("/login");
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
-
     console.log("Buscando:", search);
-    
   };
 
-  const navigate = useNavigate();
   return (
     <div>
       <Navbar
@@ -34,12 +54,21 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={NavLink} to="/admin">
-                Panel De Administrador
-              </Nav.Link>
+              {isLoggedIn && userEmail === ADMIN_EMAIL && (
+                <Nav.Link as={NavLink} to="/admin">
+                  Panel De Administrador
+                </Nav.Link>
+              )}
               <Nav.Link as={NavLink} to="/registro">
                 Registrarse
               </Nav.Link>
+              {!isLoggedIn ? (
+                <Nav.Link as={NavLink} to="/login">
+                  Iniciar Sesión
+                </Nav.Link>
+              ) : (
+                <Nav.Link onClick={handleLogout}>Cerrar Sesión</Nav.Link>
+              )}
             </Nav>
 
             {/* Barra de búsqueda */}
