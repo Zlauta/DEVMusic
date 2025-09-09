@@ -104,10 +104,9 @@ const Details = () => {
           </Col>
         </Row>
 
-        {/* Contenido principal */}
+        {/* Contenido principal: imagen y detalles de la cancion. */}
         <Row className="justify-content-center">
           <Col xl={4} lg={5} md={6} sm={8} xs={10} className="mb-4">
-            {/* Imagen del álbum */}
             <Card 
               className="album-card shadow-lg" 
               data-aos="fade-up"
@@ -129,7 +128,6 @@ const Details = () => {
           </Col>
 
           <Col xl={8} lg={7} md={12} className="px-md-4">
-            {/* Información de la canción */}
             <div className="song-info" data-aos="fade-left" data-aos-delay="400" data-aos-duration="1000">
               <h1 className="song-title" data-aos="fade-up" data-aos-delay="600">{song.title}</h1>
               <h3 className="song-artist" data-aos="fade-up" data-aos-delay="700">{song.artist}</h3>

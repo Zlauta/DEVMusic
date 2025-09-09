@@ -1,4 +1,3 @@
-// Datos de canciones
 export const songsData = [
   {
     id: "1",
