@@ -40,10 +40,12 @@ const RegisterPage = () => {
                   </h4>
                   <FormRegister></FormRegister>
                   <div className=" d-flex flex-column align-items-center ">
-                    <Nav.Link as={Link} to="/">
+                    <Nav.Link as={Link} to="/" className="mt-3">
                       ← Volver a Inicio
                     </Nav.Link>
-                    <h6 className="mt-3 ">Ya tengo Cuenta →</h6>
+                    <Nav.Link as={Link} to="/login" className="mt-3">
+                      Ya tengo Cuenta →
+                    </Nav.Link>
                   </div>
                 </Card.Body>
               </Card>

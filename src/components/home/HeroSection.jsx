@@ -12,7 +12,7 @@ const HeroSection = () => {
             "url('https://res.cloudinary.com/dobbi9v9x/image/upload/v1757371994/ChatGPT_Image_8_sept_2025_19_52_53_hqvgol.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "70vh",
+          height: "88vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

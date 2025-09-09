@@ -1,24 +1,20 @@
-import React from 'react'
-import Header from '../components/Header/'
-import { Outlet } from 'react-router-dom'
-import Footer from '../components/Footer'
+import React from "react";
+import Header from "../components/Header/";
+import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const LayoutComNavbar = () => {
   return (
     <div>
-      <Header>
 
-      </Header>
-      <main className='alturaMinima'>
-        <Outlet>
+      <Header></Header>
+      <main className="alturaMinima">
+        <Outlet></Outlet>
 
-        </Outlet>
       </main>
-      <Footer>
-
-      </Footer>
+      <Footer></Footer>
     </div>
-  )
-}
+  );
+};
 
-export default LayoutComNavbar
+export default LayoutComNavbar;

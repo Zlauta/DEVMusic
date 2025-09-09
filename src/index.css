@@ -67,6 +67,9 @@
 .animate-pulse-grow {
   animation: pulse-grow 1.5s ease-in-out infinite;
 
+}
+
+
 .footer a {
   text-decoration: solid 1px;
   box-shadow: 0 0 10px 5px #F8953E; /* glow naranja */
