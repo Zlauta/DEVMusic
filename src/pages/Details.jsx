@@ -46,7 +46,6 @@ const Details = () => {
 
   const handlePlaySong = () => {
     if (song?.audioUrl) {
-      // Aquí podrías implementar la lógica de reproducción
       console.log('Reproduciendo:', song.title);
     }
   };

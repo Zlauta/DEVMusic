@@ -1,4 +1,4 @@
-// Datos de ejemplo de canciones
+// Datos de canciones
 export const songsData = [
   {
     id: "1",

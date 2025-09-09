@@ -7,7 +7,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* el * significa “cualquier otra ruta” */}
         <Route path="/registro" element={<RegisterPage></RegisterPage>} />
         <Route path="*" element={<Error404 />} />
         <Route path="/details/:id" element={<Details />} />
