@@ -79,15 +79,6 @@ const Details = () => {
 
   return (
     <div className="details-page">
-      {/* Efecto de partículas flotantes */}
-      <div className="floating-particles">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-      </div>
-      
       <Container fluid className="py-4">
         {/* Header con botón de regreso */}
         <Row className="mb-4">
