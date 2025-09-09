@@ -9,7 +9,7 @@ const LayoutComNavbar = () => {
       <Header>
 
       </Header>
-      <main>
+      <main className='alturaMinima'>
         <Outlet>
 
         </Outlet>
