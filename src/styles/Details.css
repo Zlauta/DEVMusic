@@ -289,14 +289,6 @@
   background: var(--accent-orange-light);
 }
 
-/* Gradientes de texto */
-.gradient-text {
-  background: linear-gradient(45deg, var(--accent-orange), var(--accent-orange-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Overlay del álbum */
 .album-overlay {
   position: absolute;
