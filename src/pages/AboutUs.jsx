@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import Lautaro from "../assets/Lautaro_Zarate.jpg";
+import Lautaro from "../assets/LautaroZarate.jpg";
+import Nicolas from "../assets/NicolasKreisel.jpg";
+import Paula from "../assets/PaulaRodriguez.jpg";
+import Matias from "../assets/MatiasSoria.jpg";
+import Nadia from "../assets/NadiaMedina.jpg";
+//import Nicolas from "../assets/NicolasKreisel.jpg";
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
@@ -53,7 +58,7 @@ export default function AboutUs() {
     {
       name: "Nicolas Kreisel",
       role: "Desarrollador",
-      photoUrl: "/assets/team2.jpg",
+      photoUrl: Nicolas,
       githubUrl: "https://github.com/NicolasKreisel",
       linkedinUrl: "/error404"
     },
@@ -67,21 +72,21 @@ export default function AboutUs() {
     {
       name: "Paula Rodriguez",
       role: "Desarrollador",
-      photoUrl: "/assets/team4.jpg",
+      photoUrl: Paula,
       githubUrl: "https://github.com/rzpau",
       linkedinUrl: "/error404"
     },
     {
       name: "Matias Soria",
       role: "Desarrollador",
-      photoUrl: "/assets/team5.jpg",
+      photoUrl: Matias,
       githubUrl: "https://github.com/eliceo09",
       linkedinUrl: "/error404"
     },
     {
       name: "Nadia Medina",
       role: "Desarrollador",
-      photoUrl: "/assets/team6.jpg",
+      photoUrl: Nadia,
       githubUrl: "https://github.com/nadiaamedina",
       linkedinUrl: "/error404"
     }
