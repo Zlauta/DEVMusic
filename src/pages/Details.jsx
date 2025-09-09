@@ -134,7 +134,7 @@ const Details = () => {
               <h1 className="song-title" data-aos="fade-up" data-aos-delay="600">{song.title}</h1>
               <h3 className="song-artist" data-aos="fade-up" data-aos-delay="700">{song.artist}</h3>
               <div className="song-meta mb-3" data-aos="fade-up" data-aos-delay="800">
-                <Badge bg="warning" className="me-2">{song.category}</Badge>
+                <Badge bg="danger" className="me-2">{song.category}</Badge>
                 <span className="text-white-50">• {song.duration}</span>
                 <span className="text-white-50 ms-2">• {song.year}</span>
                 {song.explicit && <Badge bg="danger" className="ms-2">E</Badge>}
