@@ -19,7 +19,7 @@ const TableRow = ({ cancion, setEditando, handleRemove, formatDate }) => {
         <td>
           {cancion.urlAudio && (
             <audio controls style={{ width: "300px" }}>
-              <source src={cancion.urlAudio} type="audio/mpeg" />
+              <source src={cancion.urlAudio} type="audio/mp3" />
               Tu navegador no soporta el audio.
             </audio>
           )}

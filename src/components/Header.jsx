@@ -5,16 +5,34 @@ import LogoDev from "../assets/Logodev.png";
 import { Form, FormControl, Button } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Swal from "sweetalert2/dist/sweetalert2";
+import { obtenerCanciones } from "../service/musicsService";
 
 export const ADMIN_EMAIL = "admin@devmusic.com";
 
 const Header = () => {
-  const [search, setSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState(null);
   const navigate = useNavigate();
 
-  // correo único del admin
+  useEffect(() => {
+    if (searchText.trim() === "") {
+      setSearchSuggestions([]);
+      return;
+    }
+    // Traemos las canciones del localStorage
+    const cancionesGuardadas = obtenerCanciones();
+    // Filtramos según lo que escribe el usuario
+    const coincidencias = cancionesGuardadas.filter(
+      (c) =>
+        c.nombreCancion.toLowerCase().includes(searchText.toLowerCase()) ||
+        c.nombreArtista.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    setSearchSuggestions(coincidencias);
+  }, [searchText]);
 
   useEffect(() => {
     const user = sessionStorage.getItem("usuarios"); // acá guardás tu user en login
@@ -26,15 +44,40 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    sessionStorage.removeItem("usuarios");
-    setIsLoggedIn(false);
-    setUserEmail(null);
-    navigate("/login");
+    Swal.fire({
+      title: "¿Seguro que quieres cerrar sesión?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "orange",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Sí, cerrar sesión",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        sessionStorage.removeItem("usuario");
+        setIsLoggedIn(false);
+        setUserEmail(null);
+
+        Swal.fire({
+          title: "Sesión cerrada",
+          text: "Has cerrado sesión correctamente.",
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+
+        navigate("/");
+      }
+    });
   };
 
-  const handleSearch = (e) => {
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
-    console.log("Buscando:", search);
+    if (searchText.trim() === "") return;
+
+    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+    setSearchText("");
+    setSearchSuggestions([]); // limpiamos sugerencias
   };
 
   return (
@@ -59,9 +102,11 @@ const Header = () => {
                   Panel De Administrador
                 </Nav.Link>
               )}
-              <Nav.Link as={NavLink} to="/registro">
-                Registrarse
-              </Nav.Link>
+              {!isLoggedIn && (
+                <Nav.Link as={NavLink} to="/registro">
+                  Registrarse
+                </Nav.Link>
+              )}
               {!isLoggedIn ? (
                 <Nav.Link as={NavLink} to="/login">
                   Iniciar Sesión
@@ -69,21 +114,24 @@ const Header = () => {
               ) : (
                 <Nav.Link onClick={handleLogout}>Cerrar Sesión</Nav.Link>
               )}
+              <Nav.Link as={NavLink} to="/contacto">
+                Contactanos
+              </Nav.Link>
             </Nav>
 
             {/* Barra de búsqueda */}
 
             <Form
               className="d-flex mt-2 mt-lg-0"
-              onSubmit={handleSearch}
+              onSubmit={handleSearchSubmit}
               style={{ flex: 1, maxWidth: "345px" }}
             >
               <FormControl
                 type="search"
-                placeholder="¿Que Quieres Reproducir?... "
-                className="me-1 rounded-pill flex-grow-1"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                placeholder="¿Qué quieres reproducir?"
+                className="me-1 rounded-pill"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
                 onFocus={(e) => {
                   e.target.style.borderColor = "orange";
                   e.target.style.boxShadow =
@@ -98,32 +146,53 @@ const Header = () => {
                   e.target.style.transition = "box-shadow 0.3s ease-in-out";
                 }}
               />
-
-              {/*boton de inicio*/}
-
-              <Button
-                variant="outline-light"
-                type="button"
-                className=" rounded-pill ms-3"
-                onClick={() => navigate("/")} // redirige al Home
-                onFocus={(e) => {
-                  e.target.style.borderColor = "orange";
-                  e.target.style.boxShadow =
-                    "0 0 0 0.10rem rgba(252, 166, 54, 0.5)";
-                  e.target.style.backgroundColor = "transparent"; // quita fondo
-
-                  e.target.style.transition = "box-shadow 0.3s ease-in-out";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "";
-                  e.target.style.boxShadow = "0 0 3px orange";
-                  e.target.style.backgroundColor = "transparent"; // quita fondo
-                  e.target.style.transition = "box-shadow 0.3s ease-in-out";
-                }}
-              >
-                <i className="bi bi-house-heart "></i>
-              </Button>
+              {searchSuggestions.length > 0 && (
+                <ul
+                  className="list-group position-absolute w-100 mt-5"
+                  style={{ zIndex: 1000 }}
+                >
+                  {searchSuggestions.map((c) => (
+                    <li
+                      key={c.id}
+                      className="list-group-item list-group-item-action"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        navigate(
+                          `/search?q=${encodeURIComponent(c.nombreCancion)}`
+                        );
+                        setSearchText("");
+                        setSearchSuggestions([]);
+                      }}
+                    >
+                      🎵 {c.nombreCancion} — <strong>{c.nombreArtista}</strong>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </Form>
+            {/*boton de inicio*/}
+            <Button
+              variant="outline-light"
+              type="button"
+              className=" rounded-pill ms-3"
+              onClick={() => navigate("/")} // redirige al Home
+              onFocus={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.boxShadow =
+                  "0 0 0 0.10rem rgba(252, 166, 54, 0.5)";
+                e.target.style.backgroundColor = "transparent"; // quita fondo
+
+                e.target.style.transition = "box-shadow 0.3s ease-in-out";
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "";
+                e.target.style.boxShadow = "0 0 3px orange";
+                e.target.style.backgroundColor = "transparent"; // quita fondo
+                e.target.style.transition = "box-shadow 0.3s ease-in-out";
+              }}
+            >
+              <i className="bi bi-house-heart "></i>
+            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>

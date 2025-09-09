@@ -1,6 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -44,20 +45,20 @@ export default function Contact() {
 
   return (
     <div
-      className="flex flex-col p-4 min-h-screen min-vh-100 min-vw-100"
+      className="flex flex-col min-h-screen min-vh-100 "
       style={{
         backgroundColor: "#F8953E",
         backgroundImage:
           'url("https://www.transparenttextures.com/patterns/connected.png")',
-        justifyContent: "start",
-        alignItems: "start",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <h1 className="text-2xl font-bold mb-4 text-white">Contacto</h1>
+      <h1 className=" font-bold text-center mb-4 text-white">Contacto</h1>
 
       <form
         onSubmit={handleSubmit}
-        className="shadow-lg d-flex rounded-2xl p-6 w-full max-w-md border border-gray-300 bg-white bg-opacity-10 flex-column align-items-center"
+        className="shadow-lg d-flex rounded-2xl m-4 p-5 w-full max-w-md border border-gray-300 bg-white bg-opacity-10 flex-column align-items-center"
         style={{ backgroundColor: "rgba(255, 255, 255, 0.15)" }}
       >
         {/* Input de Nombre */}
@@ -68,7 +69,7 @@ export default function Contact() {
           onChange={handleChange}
           placeholder="Tu nombre"
           required
-          className=" rounded w-full p-3 border rounded-xl mb-4 bg-white bg-opacity-90 w-25"
+          className=" rounded w-full p-3 border rounded-xl mb-4 bg-white bg-opacity-90 w-50"
         />
 
         {/* Input de Email */}
@@ -89,27 +90,27 @@ export default function Contact() {
           onChange={handleChange}
           placeholder="Escribe tu mensaje aquí..."
           required
-          className=" rounded p-3 border rounded-xl mb-4 resize-none bg-white bg-opacity-90 border-1-gray-300 w-50 h-75 "
+          className=" rounded p-3 border rounded-xl mb-4 resize-none bg-white bg-opacity-90 border-1-gray-300 w-75 h-75 "
         />
 
         {/* Botón */}
         <button
           type="submit"
-          className=" btn btn-primary w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition"
+          className=" btn btn-primary w-full bg-blue-600 text-white mb-3 py-2 rounded-xl hover:bg-blue-700 transition"
         >
           Enviar
         </button>
         <Link
-            to="/"
-            className="btn mb-3"
-            style={{
-              backgroundColor: "#E76C3C",
-              border: "2px solid rgba(56, 59, 63, 0.62)",
-              color: "white",
-            }}
-          >
-            Volver al inicio
-          </Link>
+          to="/"
+          className="btn mb-3"
+          style={{
+            backgroundColor: "#E76C3C",
+            border: "2px solid rgba(56, 59, 63, 0.62)",
+            color: "white",
+          }}
+        >
+          Volver al inicio
+        </Link>
 
         {/* Mensaje de estado */}
         {status && (
