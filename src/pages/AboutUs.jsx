@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import Lautaro from "../assets/Lautaro_Zarate.jpg";
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
@@ -44,42 +45,42 @@ export default function AboutUs() {
   const teamMembers = [
     {
       name: "Lautaro Zarate",
-      role: "Desarrollador Full Stack",
-      photoUrl: "/assets/team1.jpg",
+      role: "Desarrollador",
+      photoUrl: Lautaro,
       githubUrl: "https://github.com/Zlauta",
       linkedinUrl: "/error404"
     },
     {
       name: "Nicolas Kreisel",
-      role: "Desarrollador Full Stack",
+      role: "Desarrollador",
       photoUrl: "/assets/team2.jpg",
       githubUrl: "https://github.com/NicolasKreisel",
       linkedinUrl: "/error404"
     },
     {
       name: "Pablo Torres",
-      role: "Desarrollador Full Stack",
+      role: "Desarrollador",
       photoUrl: "/assets/team3.jpg",
-      githubUrl: "https://github.com/pablotorres",
+      githubUrl: "https://github.com/pablotorres-dot",
       linkedinUrl: "/error404"
     },
     {
       name: "Paula Rodriguez",
-      role: "Desarrolladora Full Stack",
+      role: "Desarrollador",
       photoUrl: "/assets/team4.jpg",
-      githubUrl: "https://github.com/paularodriguez",
+      githubUrl: "https://github.com/rzpau",
       linkedinUrl: "/error404"
     },
     {
       name: "Matias Soria",
-      role: "Desarrollador Full Stack",
+      role: "Desarrollador",
       photoUrl: "/assets/team5.jpg",
-      githubUrl: "https://github.com/matiassoria",
+      githubUrl: "https://github.com/eliceo09",
       linkedinUrl: "/error404"
     },
     {
       name: "Nadia Medina",
-      role: "Desarrolladora Full Stack",
+      role: "Desarrollador",
       photoUrl: "/assets/team6.jpg",
       githubUrl: "https://github.com/nadiaamedina",
       linkedinUrl: "/error404"
@@ -193,7 +194,7 @@ export default function AboutUs() {
                       color: "white",
                       fontSize: "1.2rem",
                     }}>
-                      {!member.photoUrl.includes("team") && "Foto del miembro"}
+                      {!member.photoUrl.includes("team") && ""}
                     </div>
                   </Col>
                   <Col md={6} className={`d-none d-md-block ${index % 2 === 0 ? "order-2" : "order-1"}`}>
