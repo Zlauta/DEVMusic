@@ -25,7 +25,7 @@ function Footer() {
                   <ul className="d-flex flex-column p-2">
                     <Nav.Link
                       as={NavLink}
-                      to="/terminos"
+                      to="/terms"
                       className="text-light"
                     >
                       Términos y Condiciones
