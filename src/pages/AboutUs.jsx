@@ -5,7 +5,7 @@ import Nicolas from "../assets/NicolasKreisel.jpg";
 import Paula from "../assets/PaulaRodriguez.jpg";
 import Matias from "../assets/MatiasSoria.jpg";
 import Nadia from "../assets/NadiaMedina.jpg";
-//import Nicolas from "../assets/NicolasKreisel.jpg";
+import Pablo from "../assets/PabloTorres.png";
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
@@ -65,7 +65,7 @@ export default function AboutUs() {
     {
       name: "Pablo Torres",
       role: "Desarrollador",
-      photoUrl: "/assets/team3.jpg",
+      photoUrl: Pablo,
       githubUrl: "https://github.com/pablotorres-dot",
       linkedinUrl: "/error404"
     },
