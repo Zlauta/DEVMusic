@@ -11,6 +11,7 @@ import ProtectedRouter from "./ProtectedRouter";
 import SearchPage from "../pages/SearchPage";
 import Terminos from "../pages/TermYCondi";
 import AboutUs from "../pages/AboutUs";
+import Details from "../pages/Details";
 
 const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ const AppRouter = () => {
           <Route element={<ProtectedRouter></ProtectedRouter>}>
             <Route path="/admin" element={<AdminPage></AdminPage>}></Route>
           </Route>
+          <Route path="/detalles/:id" element={<Details></Details>}></Route>
           <Route path="/contacto" element={<Contactanos></Contactanos>}></Route>
           <Route path="/" element={<HomePage></HomePage>}></Route>
         </Route>

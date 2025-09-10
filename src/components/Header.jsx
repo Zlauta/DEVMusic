@@ -1,9 +1,8 @@
-import React, { use, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, InputGroup, Nav, Navbar } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import LogoDev from "../assets/Logodev.png";
 import { Form, FormControl, Button } from "react-bootstrap";
-import { useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from "sweetalert2/dist/sweetalert2";
 import { obtenerCanciones } from "../service/musicsService";
@@ -129,7 +128,7 @@ const Header = () => {
               <FormControl
                 type="search"
                 placeholder="¿Qué quieres reproducir?"
-                className="me-1 rounded-pill"
+                className="me-1 rounded-pill w-75"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 onFocus={(e) => {
@@ -164,35 +163,35 @@ const Header = () => {
                         setSearchSuggestions([]);
                       }}
                     >
-                      🎵 {c.nombreCancion} — <strong>{c.nombreArtista}</strong>
+                      {c.nombreCancion} — <strong>{c.nombreArtista}</strong>
                     </li>
                   ))}
                 </ul>
               )}
+              <Button
+                variant="outline-light"
+                type="button"
+                className=" rounded-pill ms-3"
+                onClick={() => navigate("/")} // redirige al Home
+                onFocus={(e) => {
+                  e.target.style.borderColor = "orange";
+                  e.target.style.boxShadow =
+                    "0 0 0 0.10rem rgba(252, 166, 54, 0.5)";
+                  e.target.style.backgroundColor = "transparent"; // quita fondo
+
+                  e.target.style.transition = "box-shadow 0.3s ease-in-out";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "";
+                  e.target.style.boxShadow = "0 0 3px orange";
+                  e.target.style.backgroundColor = "transparent"; // quita fondo
+                  e.target.style.transition = "box-shadow 0.3s ease-in-out";
+                }}
+              >
+                <i className="bi bi-house-heart "></i>
+              </Button>
             </Form>
             {/*boton de inicio*/}
-            <Button
-              variant="outline-light"
-              type="button"
-              className=" rounded-pill ms-3"
-              onClick={() => navigate("/")} // redirige al Home
-              onFocus={(e) => {
-                e.target.style.borderColor = "orange";
-                e.target.style.boxShadow =
-                  "0 0 0 0.10rem rgba(252, 166, 54, 0.5)";
-                e.target.style.backgroundColor = "transparent"; // quita fondo
-
-                e.target.style.transition = "box-shadow 0.3s ease-in-out";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "";
-                e.target.style.boxShadow = "0 0 3px orange";
-                e.target.style.backgroundColor = "transparent"; // quita fondo
-                e.target.style.transition = "box-shadow 0.3s ease-in-out";
-              }}
-            >
-              <i className="bi bi-house-heart "></i>
-            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>

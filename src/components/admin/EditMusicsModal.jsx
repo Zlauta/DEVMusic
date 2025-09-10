@@ -15,16 +15,24 @@ const EditMusicsModal = ({ canciones, onSaved, onClose }) => {
     defaultValues: {
       nombreCancion: canciones?.nombreCancion ?? "",
       nombreArtista: canciones?.nombreArtista ?? "",
+      duracion: canciones?.duracion ?? "",
+      anioLanzamiento: canciones?.anioLanzamiento ?? "",
+      categoria: canciones?.categoria ?? "",
       urlPortada: canciones?.urlPortada ?? "",
       urlAudio: canciones?.urlAudio ?? "",
     },
   });
+
+  const currentYear = new Date().getFullYear();
 
   const onSubmit = async (data) => {
     try {
       await actualizarCancion(canciones.id, {
         nombreCancion: data.nombreCancion.trim(),
         nombreArtista: data.nombreArtista.trim(),
+        duracion: data.duracion.trim(),
+        anioLanzamiento: data.anioLanzamiento.trim(),
+        categoria: data.categoria.trim(),
         urlPortada: data.urlPortada.trim(),
         urlAudio: data.urlAudio.trim(),
       });
@@ -94,6 +102,74 @@ const EditMusicsModal = ({ canciones, onSaved, onClose }) => {
                 {errors.nombreArtista?.message}
               </Form.Control.Feedback>
             </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Duracion</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Duracion"
+                isInvalid={!!errors.duracion}
+                {...register("duracion", {
+                  required: "La duracion de la cancion es obligatorio",
+                  maxLength: { value: 5, message: "Maximo caracteres 5" },
+                  minLength: { value: 4, message: "Minimo caracteres 4" },
+                  pattern: {
+                    value: /^[0-5]?\d:[0-5]\d$/,
+                    message:
+                      "La duración debe tener el formato mm:ss (ej: 03:45)",
+                  },
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.duracion?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Año de lanzamiento</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Año de lanzamiento"
+                isInvalid={!!errors.anioLanzamiento}
+                {...register("anioLanzamiento", {
+                  required: "El año de lanzamiento es obligatorio",
+                  pattern: {
+                    value: /^\d{4}$/,
+                    message: "El año debe tener 4 dígitos",
+                  },
+                  validate: (value) =>
+                    value >= 1900 && value <= currentYear
+                      ? true
+                      : `El año debe estar entre 1900 y ${currentYear}`,
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.anioLanzamiento?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Categoria</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Categoria"
+                isInvalid={!!errors.categoria}
+                {...register("categoria", {
+                  required: "La categoria es obligatorio",
+                  minLength: { value: 4, message: "Mínimo 4 caracteres" },
+                  maxLength: { value: 15, message: "Maximo caracteres 15" },
+                  pattern: {
+                    value: /^[\p{L}]+(?: [\p{L}]+)*$/u,
+                    message:
+                      "La categoría solo puede contener letras y espacios",
+                  },
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.categoria?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
             <Form.Group className="mb-2">
               <Form.Label>Portada (URL)</Form.Label>
               <Form.Control
