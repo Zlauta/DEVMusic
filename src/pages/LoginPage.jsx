@@ -1,7 +1,8 @@
 import React from "react";
 import FormLogin from "../components/auth/FormLogin";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Nav, Row } from "react-bootstrap";
 import LogoRegister from "../assets/logo-register.png";
+import { Link, NavLink } from "react-router-dom";
 
 const LoginPage = () => {
   return (
@@ -14,7 +15,6 @@ const LoginPage = () => {
           <Row className="justify-content-center">
             <Col xs={12} md={8} lg={6}>
               <Card
-                data-aos="zoom-in"
                 style={{
                   backgroundColor: "rgb(33, 37, 41)",
                   color: "white",
@@ -40,7 +40,9 @@ const LoginPage = () => {
                   </h4>
                   <FormLogin></FormLogin>
                   <div className=" d-flex flex-column align-items-center ">
-                    <h6 className="mt-4 ">← Volver a Inicio</h6>
+                    <Nav.Link as={Link} to="/" className="mt-4">
+                      ← Volver a Inicio
+                    </Nav.Link>
                   </div>
                 </Card.Body>
               </Card>

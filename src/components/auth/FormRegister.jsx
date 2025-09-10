@@ -2,6 +2,7 @@ import { Form, Button } from "react-bootstrap";
 // import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import { registrarUsuario } from "../../service/userService";
 
 const FormRegister = () => {
   const {
@@ -18,78 +19,53 @@ const FormRegister = () => {
       confirmPassword: "",
     },
   });
-  function obtenerUsuariosDeLocalStorage() {
-    try {
-      const listadoUsuariosJSON = localStorage.getItem("usuarios");
-      const listadoUsuarios = JSON.parse(listadoUsuariosJSON);
-      return listadoUsuarios ? listadoUsuarios : [];
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }
-
-  function guardarEnLocalStorage(usuarios) {
-    try {
-      localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }
 
   function onSubmit(data) {
     try {
-      if (data.password != data.confirmPassword) {
+      if (data.password !== data.confirmPassword) {
         Swal.fire({
-          title: "sus contraseñas no coinciden",
+          title: "Las contraseñas no coinciden",
           icon: "warning",
+          showConfirmButton: false,
+          timer: 3000,
+          position: "center",
         });
         return;
       }
+
       const nuevoUsuario = {
-        id: Date.now(),
         nombreUsuario: data.nombreUsuario,
         email: data.email,
         password: data.password,
-        createdAt: new Date().toISOString(),
       };
-      const usuariosDelLocalStorage = obtenerUsuariosDeLocalStorage();
 
-      const existeUsuario = usuariosDelLocalStorage.some(
-        (usuarios) => usuarios.email === nuevoUsuario.email
-      );
+      registrarUsuario(nuevoUsuario);
 
-      if (existeUsuario) {
-        Swal.fire({
-          icon: "error",
-          title: "Usuario existente",
-          text: "Intente con otro Email",
-        });
-        return;
-      }
-
-      guardarEnLocalStorage([...usuariosDelLocalStorage, nuevoUsuario]);
       reset();
       Swal.fire({
         title: "Cuenta creada",
-        text: "el registro se envió",
+        text: "El registro se guardó correctamente",
         icon: "success",
+        showConfirmButton: false,
+        timer: 2500,
+        position: "center",
       });
       // navigate("/");
     } catch (error) {
       Swal.fire({
-        title: "Error al registrar usuario",
         icon: "error",
+        title: "Error al registrar usuario",
+        text: error.message,
+        showConfirmButton: false,
+        timer: 2500,
+        position: "center",
       });
-      console.error(error);
     }
   }
-  // const navigate = useNavigate();
 
   return (
     <div>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form className="px-4" onSubmit={handleSubmit(onSubmit)}>
         {/* Nombre */}
         <Form.Group className="mb-3">
           <Form.Label>Nombre</Form.Label>
@@ -100,13 +76,16 @@ const FormRegister = () => {
             {...register("nombreUsuario", {
               required: "El campo es obligatorio",
               pattern: {
-                value: /^[\p{L}\p{M}\p{Nd}]+$/u,
-                message:
-                  "Solo se permiten letras y números, sin símbolos ni espacios",
+                value: /^[\p{L}]+(?: [\p{L}]+)*$/u,
+                message: "El nombre solo puede contener letras y espacios",
               },
               minLength: {
                 value: 4,
-                message: "Debe ingresar al menos 4 caracteres",
+                message: "4 Caracteres minimos ",
+              },
+              maxLength: {
+                value: 20,
+                message: "Maximo caracteres aceptados es 20",
               },
             })}
           />
@@ -144,7 +123,14 @@ const FormRegister = () => {
             isInvalid={errors.password}
             {...register("password", {
               required: "La contraseña es obligatoria",
-              minLength: { value: 6, message: "Mínimo 6 caracteres" },
+              minLength: {
+                value: 4,
+                message: "4 Caracteres minimos ",
+              },
+              maxLength: {
+                value: 20,
+                message: "Maximo caracteres aceptados es 20",
+              },
             })}
           />
           <Form.Control.Feedback type="invalid">
