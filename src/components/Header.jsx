@@ -147,7 +147,7 @@ const Header = () => {
               />
               {searchSuggestions.length > 0 && (
                 <ul
-                  className="list-group position-absolute w-100 mt-5"
+                  className="list-group position-absolute w-25 mt-5"
                   style={{ zIndex: 1000 }}
                 >
                   {searchSuggestions.map((c) => (

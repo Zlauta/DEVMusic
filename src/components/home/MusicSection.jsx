@@ -31,10 +31,11 @@ const MusicSection = () => {
               <Col md={3} key={music.id} className="mb-3">
                 <Card className="h-100 shadow-sm">
                   <Card.Img
+                    style={{ height: "200px" }}
                     variant="top"
                     src={music.urlPortada || "https://via.placeholder.com/150"}
                   />
-                  <Card.Body>
+                  <Card.Body className="d-flex flex-column justify-content-end">
                     <Card.Title>{music.nombreCancion}</Card.Title>
                     <Card.Text>{music.nombreArtista}</Card.Text>
                     <Button
@@ -59,10 +60,11 @@ const MusicSection = () => {
             <Col md={3} key={music.id} className="mb-3">
               <Card className="h-100 shadow-sm">
                 <Card.Img
+                  style={{ height: "200px" }}
                   variant="top"
                   src={music.urlPortada || "https://via.placeholder.com/150"}
                 />
-                <Card.Body>
+                <Card.Body className="d-flex flex-column justify-content-end">
                   <Card.Title>{music.nombreCancion}</Card.Title>
                   <Card.Text>{music.nombreArtista}</Card.Text>
                   <Button
@@ -86,10 +88,11 @@ const MusicSection = () => {
             <Col md={3} key={music.id} className="mb-5">
               <Card className="h-100 shadow-sm">
                 <Card.Img
+                  style={{ height: "200px" }}
                   variant="top"
                   src={music.urlPortada || "https://via.placeholder.com/150"}
                 />
-                <Card.Body>
+                <Card.Body className="d-flex flex-column justify-content-end">
                   <Card.Title>{music.nombreCancion}</Card.Title>
                   <Card.Text>{music.nombreArtista}</Card.Text>
                   <Button
