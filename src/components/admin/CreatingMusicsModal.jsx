@@ -17,8 +17,13 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
       nombreArtista: "",
       urlPortada: "",
       urlAudio: "",
+      duracion: "",
+      anioLanzamiento: "",
+      categoria: "",
     },
   });
+
+  const currentYear = new Date().getFullYear();
 
   const onSubmit = (data) => {
     const canciones = obtenerCanciones();
@@ -34,6 +39,9 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
       id: Date.now(),
       nombreCancion: data.nombreCancion.trim(),
       nombreArtista: data.nombreArtista.trim(),
+      duracion: data.duracion.trim(),
+      anioLanzamiento: data.anioLanzamiento.trim(),
+      categoria: data.categoria.trim(),
       urlPortada: data.urlPortada.trim(),
       urlAudio: data.urlAudio.trim(),
       createdAt: new Date().toISOString(),
@@ -66,7 +74,8 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
                 isInvalid={!!errors.nombreCancion}
                 {...register("nombreCancion", {
                   required: "Agregar la musica es obligatorio",
-                  minLength: { value: 2, message: "Mínimo 4 caracteres" },
+                  minLength: { value: 2, message: "Mínimo 2 caracteres" },
+                  maxLength: { value: 20, message: "Maximo caracteres 20" },
                 })}
               />
               <Form.Control.Feedback type="invalid">
@@ -82,10 +91,83 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
                 isInvalid={!!errors.nombreArtista}
                 {...register("nombreArtista", {
                   required: "Nombre del artista es obligatorio",
+                  pattern: {
+                    value: /^[\p{L}]+(?: [\p{L}]+)*$/u,
+                    message: "El artista solo puede contener letras y espacios",
+                  },
+                  minLength: { value: 2, message: "Mínimo 2 caracteres" },
+                  maxLength: { value: 20, message: "Maximo caracteres 20" },
                 })}
               />
               <Form.Control.Feedback type="invalid">
                 {errors.nombreArtista?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Duracion</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Duracion"
+                isInvalid={!!errors.duracion}
+                {...register("duracion", {
+                  required: "La duracion de la cancion es obligatorio",
+                  maxLength: { value: 5, message: "Maximo caracteres 5" },
+                  minLength: { value: 4, message: "Minimo caracteres 4" },
+                  pattern: {
+                    value: /^[0-5]?\d:[0-5]\d$/,
+                    message:
+                      "La duración debe tener el formato mm:ss (ej: 03:45)",
+                  },
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.duracion?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Año de lanzamiento</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Año de lanzamiento"
+                isInvalid={!!errors.anioLanzamiento}
+                {...register("anioLanzamiento", {
+                  required: "El año de lanzamiento es obligatorio",
+                  pattern: {
+                    value: /^\d{4}$/,
+                    message: "El año debe tener 4 dígitos",
+                  },
+                  validate: (value) =>
+                    value >= 1900 && value <= currentYear
+                      ? true
+                      : `El año debe estar entre 1900 y ${currentYear}`,
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.anioLanzamiento?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Categoria</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Categoria"
+                isInvalid={!!errors.categoria}
+                {...register("categoria", {
+                  required: "La categoria es obligatorio",
+                  minLength: { value: 4, message: "Mínimo 4 caracteres" },
+                  maxLength: { value: 15, message: "Maximo caracteres 15" },
+                  pattern: {
+                    value: /^[\p{L}]+(?: [\p{L}]+)*$/u,
+                    message:
+                      "La categoría solo puede contener letras y espacios",
+                  },
+                })}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.categoria?.message}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -115,7 +197,6 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
                 placeholder="Ej: https://ejemplo.com/audio.mp3"
                 isInvalid={!!errors.urlAudio}
                 {...register("urlAudio", {
-                  required: true,
                   required: true,
                   pattern: {
                     value: /^https?:\/\/.+/i,

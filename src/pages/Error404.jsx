@@ -22,7 +22,7 @@ const Error404 = () => {
 
     // Redirecciona cuando llega a 0
     if (count === 0) {
-      return navigate("/contacto");
+      return navigate("/");
     }
 
     return () => clearInterval(interval); // Limpia el intervalo

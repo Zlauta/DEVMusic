@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { obtenerCanciones } from "../../service/musicsService";
-import { Card, Col, Container, Row } from "react-bootstrap";
 
 const MusicSection = () => {
   const [canciones, setCanciones] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setCanciones(obtenerCanciones());
+    setCanciones(obtenerCanciones);
   }, []);
 
   const ultimas = [...canciones].slice(-4).reverse();
@@ -14,9 +16,14 @@ const MusicSection = () => {
     .sort((a, b) => (b.reproducciones || 0) - (a.reproducciones || 0))
     .slice(0, 4);
 
+  const verDetalles = (id) => {
+    navigate(`/detalles/${id}`);
+  };
+
   return (
     <>
       <Container className="mt-5">
+        {/* Sección 1: Últimas agregadas */}
         <h2 className="mb-4 text-light text-center ">Últimas agregadas</h2>
         <Row>
           {ultimas.length > 0 ? (
@@ -30,11 +37,12 @@ const MusicSection = () => {
                   <Card.Body>
                     <Card.Title>{music.nombreCancion}</Card.Title>
                     <Card.Text>{music.nombreArtista}</Card.Text>
-                    {music.urlAudio && (
-                      <audio controls style={{ width: "100%" }}>
-                        <source src={music.urlAudio} type="audio/mp3" />
-                      </audio>
-                    )}
+                    <Button
+                      variant="warning"
+                      onClick={() => verDetalles(music.id)}
+                    >
+                      Ver detalles
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -57,9 +65,12 @@ const MusicSection = () => {
                 <Card.Body>
                   <Card.Title>{music.nombreCancion}</Card.Title>
                   <Card.Text>{music.nombreArtista}</Card.Text>
-                  <audio controls style={{ width: "100%" }}>
-                    <source src={music.urlAudio} type="audio/mp3" />
-                  </audio>
+                  <Button
+                    variant="warning"
+                    onClick={() => verDetalles(music.id)}
+                  >
+                    Ver detalles
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -81,9 +92,12 @@ const MusicSection = () => {
                 <Card.Body>
                   <Card.Title>{music.nombreCancion}</Card.Title>
                   <Card.Text>{music.nombreArtista}</Card.Text>
-                  <audio controls style={{ width: "100%" }}>
-                    <source src={music.urlAudio} type="audio/mp3" />
-                  </audio>
+                  <Button
+                    variant="warning"
+                    onClick={() => verDetalles(music.id)}
+                  >
+                    Ver detalles
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

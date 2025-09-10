@@ -16,20 +16,13 @@ function Footer() {
             <img src={LogoDev} alt="logo devmusic" width={150} height={150} />
           </Col>
           <Col md={8}>
-            <h4 className="d-flex justify-content-center mt-5">
-              DEVMusic
-            </h4>
+            <h4 className="d-flex justify-content-center mt-5">DEVMusic</h4>
             <div className="d-flex text-center justify-content-center">
               <div>
                 <Nav>
                   <ul className="d-flex flex-column p-2">
-                    <Nav.Link
-                      as={NavLink}
-                      to="/terms"
-                      className="text-light"
-                    >
+                    <Nav.Link as={NavLink} to="/terms" className="text-light">
                       Términos y Condiciones
-                
                     </Nav.Link>
                     <Nav.Link
                       as={NavLink}
@@ -37,9 +30,6 @@ function Footer() {
                       className="text-light mt-3"
                     >
                       Nosotros
-                    </Nav.Link>
-                    <Nav.Link as={NavLink} to="/" className="text-light mt-3">
-                      Volver al Inicio
                     </Nav.Link>
                   </ul>
                 </Nav>

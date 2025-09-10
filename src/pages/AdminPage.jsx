@@ -5,7 +5,9 @@ import MusicsTable from "../components/admin/MusicsTable";
 const AdminPage = () => {
   return (
     <>
-      <MusicsTable></MusicsTable>
+      <div style={{ background: "white" }}>
+        <MusicsTable></MusicsTable>
+      </div>
     </>
   );
 };

@@ -64,6 +64,14 @@ const FormLogin = () => {
             isInvalid={errors.email}
             {...register("email", {
               required: "El campo es obligatorio",
+              minLength: {
+                value: 4,
+                message: "4 Caracteres minimos ",
+              },
+              maxLength: {
+                value: 20,
+                message: "Maximo caracteres aceptados es 20",
+              },
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
                 message: "El email no es válido",
@@ -86,7 +94,14 @@ const FormLogin = () => {
             isInvalid={errors.password}
             {...register("password", {
               required: "La contraseña es obligatoria",
-              minLength: { value: 6, message: "Mínimo 6 caracteres" },
+              minLength: {
+                value: 4,
+                message: "4 Caracteres minimos ",
+              },
+              maxLength: {
+                value: 20,
+                message: "Maximo caracteres aceptados es 20",
+              },
             })}
           />
           <Form.Control.Feedback type="invalid">

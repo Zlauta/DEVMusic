@@ -34,9 +34,10 @@ export function eliminarTodasLasCanciones() {
   guardarCanciones([]);
 }
 
-export function obtenerCancionPorId(id) {
-  return obtenerCanciones().find((cancion) => cancion.id === id);
-}
+export const obtenerCancionPorId = (id) => {
+  const canciones = obtenerCanciones(); // trae todas las canciones
+  return canciones.find((cancion) => cancion.id.toString() === id.toString());
+};
 
 export function actualizarCancion(id, cambios) {
   const canciones = obtenerCanciones();
@@ -45,7 +46,8 @@ export function actualizarCancion(id, cambios) {
 
   if (cambios.nombreCancion) {
     const dup = canciones.some(
-      (cancion) => cancion.nombreCancion === cambios.nombreCancion && cancion.id !== id
+      (cancion) =>
+        cancion.nombreCancion === cambios.nombreCancion && cancion.id !== id
     );
     if (dup) {
       const err = new Error("CANCION_EXISTE");

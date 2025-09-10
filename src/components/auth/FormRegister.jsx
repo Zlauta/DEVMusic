@@ -76,13 +76,16 @@ const FormRegister = () => {
             {...register("nombreUsuario", {
               required: "El campo es obligatorio",
               pattern: {
-                value: /^[\p{L}\p{M}\p{Nd}]+$/u,
-                message:
-                  "Solo se permiten letras y números, sin símbolos ni espacios",
+                value: /^[\p{L}]+(?: [\p{L}]+)*$/u,
+                message: "El nombre solo puede contener letras y espacios",
               },
               minLength: {
                 value: 4,
-                message: "Debe ingresar al menos 4 caracteres",
+                message: "4 Caracteres minimos ",
+              },
+              maxLength: {
+                value: 20,
+                message: "Maximo caracteres aceptados es 20",
               },
             })}
           />
@@ -120,7 +123,14 @@ const FormRegister = () => {
             isInvalid={errors.password}
             {...register("password", {
               required: "La contraseña es obligatoria",
-              minLength: { value: 6, message: "Mínimo 6 caracteres" },
+              minLength: {
+                value: 4,
+                message: "4 Caracteres minimos ",
+              },
+              maxLength: {
+                value: 20,
+                message: "Maximo caracteres aceptados es 20",
+              },
             })}
           />
           <Form.Control.Feedback type="invalid">
