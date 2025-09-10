@@ -9,6 +9,8 @@ import LoginPage from "../pages/LoginPage";
 import Contactanos from "../pages/Contactanos";
 import ProtectedRouter from "./ProtectedRouter";
 import SearchPage from "../pages/SearchPage";
+import Terminos from "../pages/TermYCondi";
+import AboutUs from "../pages/AboutUs";
 
 const AppRouter = () => {
   return (
@@ -25,6 +27,8 @@ const AppRouter = () => {
         {/* el * significa “cualquier otra ruta” */}
         <Route path="/registro" element={<RegisterPage></RegisterPage>} />
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+        <Route path="/terms" element={<Terminos></Terminos>}></Route>
+        <Route path="/nosotros" element={<AboutUs></AboutUs>}></Route>
 
         <Route path="*" element={<Error404 />} />
       </Routes>
