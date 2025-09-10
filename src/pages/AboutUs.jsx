@@ -5,7 +5,7 @@ import Nicolas from "../assets/NicolasKreisel.jpg";
 import Paula from "../assets/PaulaRodriguez.jpg";
 import Matias from "../assets/MatiasSoria.jpg";
 import Nadia from "../assets/NadiaMedina.jpg";
-//import Nicolas from "../assets/NicolasKreisel.jpg";
+import Pablo from "../assets/PabloTorres.png";
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
@@ -65,7 +65,7 @@ export default function AboutUs() {
     {
       name: "Pablo Torres",
       role: "Desarrollador",
-      photoUrl: "/assets/team3.jpg",
+      photoUrl: Pablo,
       githubUrl: "https://github.com/pablotorres-dot",
       linkedinUrl: "/error404"
     },
@@ -255,7 +255,7 @@ export default function AboutUs() {
                       color: "white",
                       fontSize: "1rem",
                     }}>
-                      {!member.photoUrl.includes("team") && "Foto del miembro"}
+                      {!member.photoUrl.includes("team") && ""}
                     </div>
                     <Card.Body style={{ padding: "1.5rem", textAlign: "center", color: "white" }}>
                       <h3 style={{ color: "#F8953E", marginBottom: "0.5rem", fontSize: "1.5rem", fontWeight: "bold", textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}>
