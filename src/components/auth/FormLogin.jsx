@@ -69,16 +69,12 @@ const FormLogin = () => {
                 message: "4 Caracteres minimos ",
               },
               maxLength: {
-                value: 20,
-                message: "Maximo caracteres aceptados es 20",
+                value: 30,
+                message: "Maximo caracteres aceptados es 30",
               },
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
                 message: "El email no es válido",
-              },
-              minLength: {
-                value: 4,
-                message: "Debe ingresar al menos 4 caracteres",
               },
             })}
           />
