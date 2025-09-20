@@ -1,15 +1,11 @@
+import { formatDate } from "../utils/formatDate";
 // Función generadora de ID único
 function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
 }
 
-// Función generadora de fecha actual
-function generateFecha() {
-  return new Date().toISOString();
-}
-
 // Array de 20 canciones
-const canciones = [
+const cancionesIniciales = [
   {
     id: generateId(),
     titulo: "Blinding Lights",
@@ -18,7 +14,7 @@ const canciones = [
     anioLanzamiento: 2019,
     categoria: "Internacional",
     duracion: "3:20",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/4f4a2a6bde78c/500x500.jpg",
     urlAudio:
@@ -32,7 +28,7 @@ const canciones = [
     anioLanzamiento: 2017,
     categoria: "Internacional",
     duracion: "3:53",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/17f490db9aab6/500x500.jpg",
     urlAudio:
@@ -46,7 +42,7 @@ const canciones = [
     anioLanzamiento: 2020,
     categoria: "Internacional",
     duracion: "3:23",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/3cbb34d85f5b2/500x500.jpg",
     urlAudio:
@@ -60,7 +56,7 @@ const canciones = [
     anioLanzamiento: 2020,
     categoria: "Latino",
     duracion: "3:25",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/b03e43a95c5c3/500x500.jpg",
     urlAudio:
@@ -74,7 +70,7 @@ const canciones = [
     anioLanzamiento: 2021,
     categoria: "Latino",
     duracion: "4:47",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/23aa2c2e5ccdb/500x500.jpg",
     urlAudio:
@@ -88,7 +84,7 @@ const canciones = [
     anioLanzamiento: 2017,
     categoria: "Latino",
     duracion: "3:49",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/b2f146f41d5fd/500x500.jpg",
     urlAudio:
@@ -102,7 +98,7 @@ const canciones = [
     anioLanzamiento: 2014,
     categoria: "Internacional",
     duracion: "4:30",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/4e4eab0d9d5e/500x500.jpg",
     urlAudio:
@@ -116,7 +112,7 @@ const canciones = [
     anioLanzamiento: 2018,
     categoria: "Latino",
     duracion: "3:32",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/4cddcc1e332b/500x500.jpg",
     urlAudio:
@@ -130,7 +126,7 @@ const canciones = [
     anioLanzamiento: 2020,
     categoria: "Latino",
     duracion: "3:21",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/57afc4a69a44/500x500.jpg",
     urlAudio:
@@ -144,7 +140,7 @@ const canciones = [
     anioLanzamiento: 2019,
     categoria: "Latino",
     duracion: "4:02",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/3f4a7a9dd32a/500x500.jpg",
     urlAudio:
@@ -158,7 +154,7 @@ const canciones = [
     anioLanzamiento: 2020,
     categoria: "Internacional",
     duracion: "3:36",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/6a9b72a63a76/500x500.jpg",
     urlAudio:
@@ -172,7 +168,7 @@ const canciones = [
     anioLanzamiento: 2019,
     categoria: "Internacional",
     duracion: "3:11",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/2a3c0ccf8a2a/500x500.jpg",
     urlAudio:
@@ -186,7 +182,7 @@ const canciones = [
     anioLanzamiento: 2018,
     categoria: "Internacional",
     duracion: "2:38",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/19fbb03f44b3/500x500.jpg",
     urlAudio:
@@ -200,7 +196,7 @@ const canciones = [
     anioLanzamiento: 2019,
     categoria: "Latino",
     duracion: "2:46",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/5b6d0f6a1c2c/500x500.jpg",
     urlAudio:
@@ -214,7 +210,7 @@ const canciones = [
     anioLanzamiento: 2017,
     categoria: "Latino",
     duracion: "3:06",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/2a6bb3e5c1d5/500x500.jpg",
     urlAudio:
@@ -228,7 +224,7 @@ const canciones = [
     anioLanzamiento: 2021,
     categoria: "Latino",
     duracion: "3:29",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/7b3c4a65a5e3/500x500.jpg",
     urlAudio:
@@ -242,7 +238,7 @@ const canciones = [
     anioLanzamiento: 2017,
     categoria: "Internacional",
     duracion: "4:23",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/8e0b0e8b92f3/500x500.jpg",
     urlAudio:
@@ -256,7 +252,7 @@ const canciones = [
     anioLanzamiento: 2021,
     categoria: "Internacional",
     duracion: "3:27",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/3e8c1f7a9c6b/500x500.jpg",
     urlAudio:
@@ -270,7 +266,7 @@ const canciones = [
     anioLanzamiento: 2019,
     categoria: "Internacional",
     duracion: "3:03",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/9d8c2f6a7c5a/500x500.jpg",
     urlAudio:
@@ -284,7 +280,7 @@ const canciones = [
     anioLanzamiento: 2019,
     categoria: "Internacional",
     duracion: "3:29",
-    fechaDeCreacion: generateFecha(),
+    fechaDeCreacion: formatDateDate(),
     urlPortada:
       "https://cdns-images.dzcdn.net/images/cover/7d2c3f4a6e9a/500x500.jpg",
     urlAudio:
@@ -292,4 +288,4 @@ const canciones = [
   },
 ];
 
-export default canciones;
+export default cancionesIniciales;

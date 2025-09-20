@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   eliminarCancionPorId,
+  guardarCanciones,
   obtenerCanciones,
 } from "../../service/musicsService";
 import TableRow from "./TableRow";
@@ -9,6 +10,7 @@ import EditMusicsModal from "./EditMusicsModal";
 import Swal from "sweetalert2/dist/sweetalert2";
 import { Button, Container, Table } from "react-bootstrap";
 import { formatDate } from "../../utils/formatDate";
+import cancionesIniciales from "../../db/MusicLoaded";
 
 const MusicsTable = () => {
   formatDate();
@@ -19,7 +21,12 @@ const MusicsTable = () => {
   const load = () => setCanciones(obtenerCanciones());
 
   useEffect(() => {
+    // Si no hay canciones en localStorage, cargamos las iniciales
+    if (!obtenerCanciones().length) {
+      guardarCanciones(cancionesIniciales);
+    }
     load();
+
     const onStorage = (e) => {
       if (e.key === "canciones") load();
     };
