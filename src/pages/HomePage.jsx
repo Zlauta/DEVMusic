@@ -5,7 +5,7 @@ import MusicSection from "../components/home/MusicSection";
 const HomePage = () => {
   return (
     <>
-      <div style={{ background: "rgb(14, 2, 15)" }}>
+      <div >
         <HeroSection></HeroSection>
         <MusicSection></MusicSection>
       </div>
