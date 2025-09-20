@@ -1,175 +1,295 @@
-export const musicaCargada = [
-  {
-    // Despacito
+// Función generadora de ID único
+function generateId() {
+  return Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
+}
 
-    nombreArtista: "Luis Fonsi",
-    nombreCancion: "Despacito",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1756943318/ytmp3free.cc_luis-fonsi-despacito-ft-daddy-yankee-youtubemp3free.org_1_zmr1t8.mp3",
-    urlPortada: "https://api.deezer.com/album/85603632/image",
-  },
-  {
-    // 7 VIDAS
-    nombreArtista: "Maria Becerra",
-    nombreCancion: "7 VIDAS",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1756944987/ytmp3free.cc_maria-becerra-7-vidas-lyric-video-cantoyo-youtubemp3free.org_o2bucb.mp3",
-    urlPortada: "https://api.deezer.com/album/804471101/image",
-  },
-  {
-    // Dispara
-    nombreArtista: "Nicki Nicole",
-    nombreCancion: "Dispara",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757019483/ytmp3free.cc_nicki-nicole-milo-j-dispara-official-video-youtubemp3free.org_rnsxia.mp3",
-    urlPortada: "https://api.deezer.com/album/439533297/image",
-  },
+// Función generadora de fecha actual
+function generateFecha() {
+  return new Date().toISOString();
+}
 
+// Array de 20 canciones
+const canciones = [
   {
-    // Con Otra
-    nombreArtista: "Cazzu",
-    nombreCancion: "Con Otra",
+    id: generateId(),
+    titulo: "Blinding Lights",
+    artista: "The Weeknd",
+    genero: "Pop",
+    anioLanzamiento: 2019,
+    categoria: "Internacional",
+    duracion: "3:20",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/4f4a2a6bde78c/500x500.jpg",
     urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757020262/ytmp3free.cc_cazzu-con-otra-video-oficial-youtubemp3free.org_aqwh32.mp3",
-    urlPortada: "https://api.deezer.com/album/728109741/image",
+      "https://cdns-preview-4.dzcdn.net/stream/c-40e1a4cf716f7ef3b92aa8bcfdd5c615-3.mp3",
   },
   {
-    // Yo canibal
-    nombreArtista: "Los Redondos",
-    nombreCancion: "Yo Caníbal",
+    id: generateId(),
+    titulo: "Shape of You",
+    artista: "Ed Sheeran",
+    genero: "Pop",
+    anioLanzamiento: 2017,
+    categoria: "Internacional",
+    duracion: "3:53",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/17f490db9aab6/500x500.jpg",
     urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757020538/ytmp3free.cc_patricio-rey-y-sus-redonditos-de-ricota-yo-canibal-audio-oficial-youtubemp3free.org_lsxbhp.mp3",
-    urlPortada: "https://api.deezer.com/album/526244312/image",
-  },
-
-  {
-    // Profugos
-    nombreArtista: "Soda Estereo",
-    nombreCancion: "Profugos",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757104013/ytmp3free.cc_soda-stereo-profugos-official-audio-youtubemp3free.org_rqdxqa.mp3",
-    urlPortada: "https://api.deezer.com/album/1214222/image",
-  },
-
-  {
-    // Un monton de nada
-    nombreArtista: "Memphis La Blusera",
-    nombreCancion: "Un Montón De Nada",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757021527/ytmp3free.cc_monton-de-nada-memphis-la-blusera-youtubemp3free.org_penajw.mp3",
-    urlPortada: "https://api.deezer.com/artist/265862/image",
+      "https://cdns-preview-8.dzcdn.net/stream/c-8ab54a0d22fa82348a8dbe27d9b69f29-6.mp3",
   },
   {
-    // Rezo por vos
-    nombreArtista: "Charly Garcia",
-    nombreCancion: "Rezo Por Vos",
+    id: generateId(),
+    titulo: "Levitating",
+    artista: "Dua Lipa",
+    genero: "Pop",
+    anioLanzamiento: 2020,
+    categoria: "Internacional",
+    duracion: "3:23",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/3cbb34d85f5b2/500x500.jpg",
     urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757022012/ytmp3free.cc_charly-garcia-rezo-por-vos-official-audio-youtubemp3free.org_kxqxfo.mp3",
-    urlPortada: "https://api.deezer.com/album/1217379/image",
-  },
-
-  {
-    // Monaco
-    nombreArtista: "Desakta2",
-    nombreCancion: "Monaco",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757022199/ytmp3free.cc_monaco-desakta2-youtubemp3free.org_ipvyiz.mp3",
-    urlPortada: "https://api.deezer.com/album/544000102/image",
-  },
-
-  {
-    // Tu foto
-    nombreArtista: "Q'Lokura y Valentino Merlo",
-    nombreCancion: "Tu Foto",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757103805/ytmp3free.cc_q-lokura-valentino-merlo-tu-foto-youtubemp3free.org_hgmhxy.mp3",
-    urlPortada: "https://api.deezer.com/album/586664972/image",
+      "https://cdns-preview-7.dzcdn.net/stream/c-7cde8023f2ea6a0a2a0e7ad3e76c37f0-6.mp3",
   },
   {
-    // Nostalgias tucumana
-    nombreArtista: "Chaqueño Palavecino",
-    nombreCancion: "Nostalgias Tucumana",
+    id: generateId(),
+    titulo: "Dakiti",
+    artista: "Bad Bunny, Jhay Cortez",
+    genero: "Reggaeton",
+    anioLanzamiento: 2020,
+    categoria: "Latino",
+    duracion: "3:25",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/b03e43a95c5c3/500x500.jpg",
     urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757104371/ytmp3free.cc_chaqueo-palavecino-nostalgias-tucumanas-youtubemp3free.org_qggnhg.mp3",
-    urlPortada: "https://api.deezer.com/album/231384132/image",
-  },
-
-  {
-    // Luna tucumana
-    nombreArtista: "Mercedes Sosa",
-    nombreCancion: "Luna Tucumana",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757105275/ytmp3free.cc_mercedes-sosa-luna-tucumana-ft-ariel-ramirez-tito-francia-youtubemp3free.org_xnioaa.mp3",
-    urlPortada: "https://api.deezer.com/album/150710522/image",
-  },
-
-  {
-    // La vi bajar por el rio
-    nombreArtista: "Horacio Guarany",
-    nombreCancion: "La Vi Bajar Por el Rio",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757105572/ytmp3free.cc_horacio-guarany-la-vi-bajar-por-el-rio-audio-youtubemp3free.org_rwigut.mp3",
-    urlPortada: "https://api.deezer.com/album/144258182/image",
-  },
-
-  {
-    // Paint it black
-    nombreArtista: "The Rolling Stone",
-    nombreCancion: "Paint It Black",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757109088/ytmp3free.cc_the-rolling-stones-paint-it-black-official-lyric-video-youtubemp3free.org_jgz8uo.mp3",
-    urlPortada: "https://api.deezer.com/album/721846/image",
-  },
-
-  {
-    // Don't Cry
-    nombreArtista: "Guns N' Roses",
-    nombreCancion: "Don't Cry",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757109383/ytmp3free.cc_guns-n-roses-dont-cry-youtubemp3free.org_ftpemj.mp3",
-    urlPortada: "https://api.deezer.com/album/125209/image",
-  },
-
-  {
-    // Californcation
-    nombreArtista: "Red Hot Chili Peppers",
-    nombreCancion: "Californication",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757109583/ytmp3free.cc_red-hot-chili-peppers-californication-official-music-video-hd-upgrade-youtubemp3free.org_iqpbqu.mp3",
-    urlPortada: "https://api.deezer.com/album/86511/image",
-  },
-
-  {
-    // Desnuda
-    nombreArtista: "Ricardo Arjona",
-    nombreCancion: "Desnuda",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757109948/ytmp3free.cc_ricardo-arjona-desnuda-letra-youtubemp3free.org_duczei.mp3",
-    urlPortada: "https://api.deezer.com/album/6223558/image",
-  },
-
-  {
-    // Carencia de Cordura
-    nombreArtista: "Milo J",
-    nombreCancion: "Carencia De Cordura",
-    urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757110241/ytmp3free.cc_milo-j-carencias-de-cordura-ft-yami-safdie-video-oficial-youtubemp3free.org_niwurb.mp3",
-    urlPortada: "https://api.deezer.com/album/533944192/image",
+      "https://cdns-preview-6.dzcdn.net/stream/c-6c5f803fb9ad1f3c1a77cb9e2b07b43d-6.mp3",
   },
   {
-    // Volando(remix)
-    nombreArtista: "Mora",
-    nombreCancion: "Volando (Remix)",
+    id: generateId(),
+    titulo: "Pepas",
+    artista: "Farruko",
+    genero: "Reggaeton",
+    anioLanzamiento: 2021,
+    categoria: "Latino",
+    duracion: "4:47",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/23aa2c2e5ccdb/500x500.jpg",
     urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757110873/ytmp3free.cc_mora-x-bad-bunny-x-sech-volando-remix-video-oficial-youtubemp3free.org_xseo2y.mp3",
-    urlPortada: "https://api.deezer.com/album/242452202/image",
+      "https://cdns-preview-5.dzcdn.net/stream/c-5d2e4023e5bbdf7e83b23cb5a9a89fd0-6.mp3",
   },
   {
-    // La pucha con el hombre
-    nombreArtista: "Los Carabajal",
-    nombreCancion: "La Pucha Con El Hombre",
+    id: generateId(),
+    titulo: "Despacito",
+    artista: "Luis Fonsi, Daddy Yankee",
+    genero: "Reggaeton",
+    anioLanzamiento: 2017,
+    categoria: "Latino",
+    duracion: "3:49",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/b2f146f41d5fd/500x500.jpg",
     urlAudio:
-      "https://res.cloudinary.com/dobbi9v9x/video/upload/v1757111141/ytmp3free.cc_la-pucha-con-el-hombre-youtubemp3free.org_zjtsef.mp3",
-    urlPortada: "https://api.deezer.com/album/1368458/image",
+      "https://cdns-preview-4.dzcdn.net/stream/c-41b6a2c4d4f5b8e7e5c8f69b7a73e60-4.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Uptown Funk",
+    artista: "Mark Ronson ft. Bruno Mars",
+    genero: "Funk / Pop",
+    anioLanzamiento: 2014,
+    categoria: "Internacional",
+    duracion: "4:30",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/4e4eab0d9d5e/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-2.dzcdn.net/stream/c-292bb4327f7a5806d79eeb5c1c6a0de5-4.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Taki Taki",
+    artista: "DJ Snake, Selena Gomez, Ozuna, Cardi B",
+    genero: "Reggaeton / Pop",
+    anioLanzamiento: 2018,
+    categoria: "Latino",
+    duracion: "3:32",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/4cddcc1e332b/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-0.dzcdn.net/stream/c-0a60a73d15a893a5978e5bbaa1f83f7f-4.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Hawái",
+    artista: "Maluma",
+    genero: "Reggaeton",
+    anioLanzamiento: 2020,
+    categoria: "Latino",
+    duracion: "3:21",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/57afc4a69a44/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-9.dzcdn.net/stream/c-996932bb7f4a9b67b95d99a2db5f3e28-3.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "La Canción",
+    artista: "J Balvin, Bad Bunny",
+    genero: "Reggaeton",
+    anioLanzamiento: 2019,
+    categoria: "Latino",
+    duracion: "4:02",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/3f4a7a9dd32a/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-3.dzcdn.net/stream/c-3c41796c212fca15f58f942ebd833b74-4.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Save Your Tears",
+    artista: "The Weeknd",
+    genero: "Pop",
+    anioLanzamiento: 2020,
+    categoria: "Internacional",
+    duracion: "3:36",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/6a9b72a63a76/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-5.dzcdn.net/stream/c-55d2e4023e5bbdf7e83b23cb5a9a89fd0-6.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Señorita",
+    artista: "Shawn Mendes, Camila Cabello",
+    genero: "Pop",
+    anioLanzamiento: 2019,
+    categoria: "Internacional",
+    duracion: "3:11",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/2a3c0ccf8a2a/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-1.dzcdn.net/stream/c-11c60d3b9ef7b7f50b2e40a7b77d8a5d-5.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Sunflower",
+    artista: "Post Malone, Swae Lee",
+    genero: "Hip-Hop",
+    anioLanzamiento: 2018,
+    categoria: "Internacional",
+    duracion: "2:38",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/19fbb03f44b3/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-0.dzcdn.net/stream/c-0c7e20c70afbb96d9c7c3f1a833e20b4-5.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Baila Baila Baila",
+    artista: "Ozuna",
+    genero: "Reggaeton",
+    anioLanzamiento: 2019,
+    categoria: "Latino",
+    duracion: "2:46",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/5b6d0f6a1c2c/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-8.dzcdn.net/stream/c-8c5c0a02a5a732f9f5c3bb2d73c0b4c2-6.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Mi Gente",
+    artista: "J Balvin, Willy William",
+    genero: "Reggaeton",
+    anioLanzamiento: 2017,
+    categoria: "Latino",
+    duracion: "3:06",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/2a6bb3e5c1d5/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-6.dzcdn.net/stream/c-6a6f4e6a43d8e49b6e89e7c3b21f5b6c-7.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Dákiti (Remix)",
+    artista: "Bad Bunny",
+    genero: "Reggaeton",
+    anioLanzamiento: 2021,
+    categoria: "Latino",
+    duracion: "3:29",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/7b3c4a65a5e3/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-4.dzcdn.net/stream/c-4e8f2d2a5b43a88f8e23df0b5c92a8ec-8.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Perfect",
+    artista: "Ed Sheeran",
+    genero: "Pop",
+    anioLanzamiento: 2017,
+    categoria: "Internacional",
+    duracion: "4:23",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/8e0b0e8b92f3/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-9.dzcdn.net/stream/c-9a0b9a8e7b3c9b83c3b2c4e1a2b8c5d9-4.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Shivers",
+    artista: "Ed Sheeran",
+    genero: "Pop",
+    anioLanzamiento: 2021,
+    categoria: "Internacional",
+    duracion: "3:27",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/3e8c1f7a9c6b/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-2.dzcdn.net/stream/c-2f9a6c1e8b4a9d7f5a3e9c8c7d2a5e3f-7.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Don't Start Now",
+    artista: "Dua Lipa",
+    genero: "Pop",
+    anioLanzamiento: 2019,
+    categoria: "Internacional",
+    duracion: "3:03",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/9d8c2f6a7c5a/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-1.dzcdn.net/stream/c-1b3f6e8c7a2d9f4c6e8a7b2d5c1a9f3d-6.mp3",
+  },
+  {
+    id: generateId(),
+    titulo: "Dance Monkey",
+    artista: "Tones and I",
+    genero: "Pop",
+    anioLanzamiento: 2019,
+    categoria: "Internacional",
+    duracion: "3:29",
+    fechaDeCreacion: generateFecha(),
+    urlPortada:
+      "https://cdns-images.dzcdn.net/images/cover/7d2c3f4a6e9a/500x500.jpg",
+    urlAudio:
+      "https://cdns-preview-0.dzcdn.net/stream/c-0c7d2a6f5b8e4c3a9f6b1c2d5f7a3b9d-7.mp3",
   },
 ];
+
+export default canciones;

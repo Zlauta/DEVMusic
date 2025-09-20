@@ -1,44 +1,45 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import canciones from "../../db/MusicLoaded";
 
 const TableRow = ({ cancion, setEditando, handleRemove, formatDate }) => {
   return (
     <>
-      <tr key={cancion.id}>
+      <tr key={canciones.id}>
         <td>
-          {cancion.urlPortada && (
+          {canciones.urlPortada && (
             <img
-              src={cancion.urlPortada}
+              src={canciones.urlPortada}
               alt="portada"
               style={{ width: "60px", height: "60px", objectFit: "cover" }}
             />
           )}
         </td>
-        <td>{cancion.nombreCancion}</td>
-        <td>{cancion.nombreArtista}</td>
+        <td>{canciones.titulo}</td>
+        <td>{canciones.artista}</td>
         <td>
-          {cancion.urlAudio && (
+          {canciones.urlAudio && (
             <audio controls style={{ width: "300px" }}>
-              <source src={cancion.urlAudio} type="audio/mp3" />
+              <source src={canciones.urlAudio} type="audio/mp3" />
               Tu navegador no soporta el audio.
             </audio>
           )}
         </td>
-        <td>{formatDate(cancion.createdAt)}</td>
+        <td>{canciones.fechaDeCreacion}</td>
 
         <td className="d-flex gap-2">
           <Button
             style={{ background: "#1A1D21" }}
             size="md"
             variant="secondary"
-            onClick={() => setEditando(cancion)}
+            onClick={() => setEditando(canciones)}
           >
             Editar
           </Button>
           <Button
             size="md"
             variant="danger"
-            onClick={() => handleRemove(cancion.id)}
+            onClick={() => handleRemove(canciones.id)}
           >
             Eliminar
           </Button>
