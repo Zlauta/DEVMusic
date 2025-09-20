@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Nav } from "react-bootstrap";
-import LogoDev from "../assets/logodev.png";
-import LogoFooter from "../assets/logoFooteranimado.svg";
+import LogoDev from "../assets/images/logodev.png";
+import LogoFooter from "../assets/anim/logoFooteranimado.svg";
 import { NavLink } from "react-router-dom";
 
 function Footer() {

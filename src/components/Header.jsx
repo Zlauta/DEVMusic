@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, InputGroup, Nav, Navbar } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
-import LogoDev from "../assets/Logodev.png";
+import LogoDev from "../assets/images/logodev.png";
 import { Form, FormControl, Button } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from "sweetalert2/dist/sweetalert2";

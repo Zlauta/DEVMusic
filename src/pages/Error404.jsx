@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import animationError from "../assets/milogoGigante.svg";
+import animationError from "../assets/anim/milogoGigante.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";

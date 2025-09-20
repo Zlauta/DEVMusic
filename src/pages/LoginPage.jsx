@@ -1,7 +1,7 @@
 import React from "react";
 import FormLogin from "../components/auth/FormLogin";
 import { Card, Col, Container, Nav, Row } from "react-bootstrap";
-import LogoRegister from "../assets/logo-register.png";
+import LogoRegister from "../assets/images/logodev.png";
 import { Link, NavLink } from "react-router-dom";
 
 const LoginPage = () => {

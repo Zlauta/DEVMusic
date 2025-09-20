@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Col, Container, Nav, Row } from "react-bootstrap";
 import FormRegister from "../components/auth/FormRegister";
 import { Link, NavLink } from "react-router-dom";
-import LogoRegister from "../assets/logo-register.png";
+import LogoRegister from "../assets/images/logodev.png";
 
 const RegisterPage = () => {
   return (
