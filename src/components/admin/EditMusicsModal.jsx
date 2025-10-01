@@ -13,11 +13,12 @@ const EditMusicsModal = ({ canciones, onSaved, onClose }) => {
   } = useForm({
     mode: "onchange",
     defaultValues: {
-      nombreCancion: canciones?.nombreCancion ?? "",
-      nombreArtista: canciones?.nombreArtista ?? "",
+      titulo: canciones?.titulo ?? "",
+      artista: canciones?.artista ?? "",
       duracion: canciones?.duracion ?? "",
       anioLanzamiento: canciones?.anioLanzamiento ?? "",
       categoria: canciones?.categoria ?? "",
+      genero: canciones?.genero ?? "",
       urlPortada: canciones?.urlPortada ?? "",
       urlAudio: canciones?.urlAudio ?? "",
     },
@@ -28,11 +29,12 @@ const EditMusicsModal = ({ canciones, onSaved, onClose }) => {
   const onSubmit = async (data) => {
     try {
       await actualizarCancion(canciones.id, {
-        nombreCancion: data.nombreCancion.trim(),
-        nombreArtista: data.nombreArtista.trim(),
+        titulo: data.titulo.trim(),
+        artista: data.artista.trim(),
         duracion: data.duracion.trim(),
         anioLanzamiento: data.anioLanzamiento.trim(),
         categoria: data.categoria.trim(),
+        genero: data.genero.trim(),
         urlPortada: data.urlPortada.trim(),
         urlAudio: data.urlAudio.trim(),
       });
@@ -149,22 +151,39 @@ const EditMusicsModal = ({ canciones, onSaved, onClose }) => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Categoria</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Categoria"
-                isInvalid={!!errors.categoria}
-                {...register("categoria", {
-                  required: "La categoria es obligatorio",
-                  minLength: { value: 4, message: "Mínimo 4 caracteres" },
-                  maxLength: { value: 15, message: "Maximo caracteres 15" },
-                  pattern: {
-                    value: /^[\p{L}]+(?: [\p{L}]+)*$/u,
-                    message:
-                      "La categoría solo puede contener letras y espacios",
-                  },
+              <Form.Label>Género</Form.Label>
+              <Form.Select
+                {...register("genero", {
+                  required: "El género es obligatorio",
                 })}
-              />
+              >
+                <option value="">Seleccionar género...</option>
+                <option value="rock">Rock</option>
+                <option value="pop">Pop</option>
+                <option value="cumbia">Cumbia</option>
+                <option value="reggaeton">Reggaetón</option>
+                <option value="electronica">Electrónica</option>
+                <option value="jazz">Jazz</option>
+              </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                {errors.genero?.message}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Categoría</Form.Label>
+              <Form.Select
+                {...register("categoria", {
+                  required: "La categoría es obligatoria",
+                })}
+              >
+                <option value="">Seleccionar categoría...</option>
+                <option value="album">Álbum</option>
+                <option value="single">Single</option>
+                <option value="ep">EP</option>
+                <option value="live">En Vivo</option>
+                <option value="remix">Remix</option>
+              </Form.Select>
               <Form.Control.Feedback type="invalid">
                 {errors.categoria?.message}
               </Form.Control.Feedback>
