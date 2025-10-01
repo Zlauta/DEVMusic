@@ -13,8 +13,8 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      nombreCancion: "",
-      nombreArtista: "",
+      titulo: "",
+      artista: "",
       duracion: "",
       anioLanzamiento: "",
       categoria: "",
@@ -38,15 +38,15 @@ const CreatingMusicsModal = ({ onClose, onSaved }) => {
 
     const nuevaCancion = {
       id: Date.now(),
-      nombreCancion: data.nombreCancion.trim(),
-      nombreArtista: data.nombreArtista.trim(),
+      titulo: data.titulo.trim(),
+      artista: data.artista.trim(),
       duracion: data.duracion.trim(),
       anioLanzamiento: data.anioLanzamiento.trim(),
       categoria: data.categoria.trim(),
       genero: data.genero.trim(),
       urlPortada: data.urlPortada.trim(),
       urlAudio: data.urlAudio.trim(),
-      createdAt: new Date().toISOString(),
+      fechaDeCreacion: new Date().toISOString,
     };
 
     agregarCancion(nuevaCancion);
